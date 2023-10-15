@@ -1,6 +1,7 @@
 (*TODO: Check if include is nessesary*)
 #use "A-expression.ml";;
 
+
 (*Splits stings into a list of chars
   Input: Str
   Output: Char List whit all charkters of the string*)
@@ -97,3 +98,6 @@ let rec parse_expression i =
 let make_parser pfn s =
   let expr,rest = pfn (lex(explode_str s)) in
     if rest = [] then expr else failwith "Unparsed input";;
+
+
+let default_parser = make_parser parse_expression;
