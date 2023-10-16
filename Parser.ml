@@ -1,5 +1,39 @@
-(*TODO: Check if include is nessesary*)
-#use "A-expression.ml";;
+(* ========================================================================= *)
+(*  A-expression                                                             *)
+(* ========================================================================= *)
+
+(* A datatype to represent the abstract syntax of algebraic expressions*)
+type expression =
+   Var of string
+ | Const of int
+ | Add of expression * expression
+ | Mul of expression * expression;;
+
+
+(* Takes an expr and simplifys it once*)
+let simplify1 expr =
+  match expr with
+    Add(Const(m),Const(n)) -> Const(m + n)
+  | Mul(Const(m),Const(n)) -> Const(m * n)
+  | Add(Const(0),x) -> x
+  | Add(x,Const(0)) -> x
+  | Mul(Const(0),x) -> Const(0)
+  | Mul(x,Const(0)) -> Const(0)
+  | Mul(Const(1),x) -> x
+  | Mul(x,Const(1)) -> x
+  | _ -> expr;;
+
+
+(* Takes an expr and simplifys it until it can't be simplified anymore*)
+let rec simplify expr =
+  match expr with
+    Add(e1,e2) -> simplify1(Add(simplify e1,simplify e2))
+  | Mul(e1,e2) -> simplify1(Mul(simplify e1,simplify e2))
+  | _ -> simplify1 expr;;
+
+(* ========================================================================= *)
+(*  Parser                                                                   *)
+(* ========================================================================= *)
 
 
 (*Splits stings into a list of chars
@@ -101,3 +135,33 @@ let make_parser pfn s =
 
 
 let default_parser = make_parser parse_expression;
+
+(* ========================================================================= *)
+(*  Printer                                                                  *)
+(* ========================================================================= *)
+
+
+(*Replaces var with str, Const with int, add whit (str1 + str2), Mul whit (str1 + str2) *)
+let rec string_of_exp_old e =
+  match e with
+    Var s -> s
+  | Const n -> string_of_int n
+  | Add(e1,e2) -> "("^(string_of_exp_old e1)^" + "^(string_of_exp_old e2)^")"
+  | Mul(e1,e2) -> "("^(string_of_exp_old e1)^" * "^(string_of_exp_old e2)^")";;
+
+
+(*Replaces var with str, Const with int, add whit str1 + str2, Mul whit str1 * str2 and places () if needed*)
+let rec string_of_exp pr e =
+  match e with
+    Var s -> s
+  | Const n -> string_of_int n
+  | Add(e1,e2) ->
+        let s = (string_of_exp 3 e1)^" + "^(string_of_exp 2 e2) in
+        if 2 < pr then "("^s^")" else s
+  | Mul(e1,e2) ->
+        let s = (string_of_exp 5 e1)^" * "^(string_of_exp 4 e2) in
+        if 4 < pr then "("^s^")" else s;;
+
+
+(*Gives out printet input*)
+let print_exp e = Format.print_string ("<<"^string_of_exp 0 e^">>");;
