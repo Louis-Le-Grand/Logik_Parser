@@ -1,6 +1,3 @@
-#use "00.ml";;
-
-
 type expression =
    Var of string
  | Const of int

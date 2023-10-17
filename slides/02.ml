@@ -1,6 +1,5 @@
 #use "01.ml";;
 
-
 let simplify1 expr =
   match expr with
     Add(Const(m),Const(n)) -> Const(m + n)

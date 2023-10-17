@@ -13,6 +13,5 @@ let print_exp_old e = Format.print_string ("<<"^string_of_exp_old e^">>");;
 
 
 (*Bsp*)
-
 let e = default_parser "(x1 + x2 + x3) * (1 + 2 + 3 * x + y)";;
 print_exp_old e;;

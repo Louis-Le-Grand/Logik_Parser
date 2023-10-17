@@ -28,5 +28,4 @@ let make_parser pfn s =
  
 (*Bsp*)
 let default_parser = make_parser parse_expression;
-default_parser "(x1 + x2 + x3) * (1 + 2 + 3 * x + y)";;
 
