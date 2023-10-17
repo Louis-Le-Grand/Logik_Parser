@@ -5,9 +5,9 @@
 (* A datatype to represent the abstract syntax of algebraic expressions*)
 type expression =
    Var of string
- | Const of int
- | Add of expression * expression
- | Mul of expression * expression;;
+  | Const of int
+  | Add of expression * expression
+  | Mul of expression * expression;;
 
 
 (* Takes an expr and simplifys it once*)
@@ -134,7 +134,7 @@ let make_parser pfn s =
     if rest = [] then expr else failwith "Unparsed input";;
 
 
-let default_parser = make_parser parse_expression;
+let default_parser = make_parser parse_expression;;
 
 (* ========================================================================= *)
 (*  Printer                                                                  *)
