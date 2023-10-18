@@ -1,9 +1,9 @@
 ## In this repository
 
-You will find the code and the slides for the parser we will be writing during my Presentation.
+Here, you will find the code and slides for the parser we will be discussing during my presentation.
 
 
-## Get the course repository
+## Get this repository
 
 * Open a terminal (or a git bash on Windows).
 
@@ -26,11 +26,13 @@ And then
 ```bash
     eval $(opam env --switch=5.1.0~alpha1)
 ```
+
+
 # Logik_Parser
 ## Types
-In Toplevel language, you can define types. For example, you can define a type `Term` and `Formula` as shown in slides\00.ml
+In Toplevel language, you can define types. For example, you can define types `Term` and `Formula` as shown in `slides\00.ml`.
 ### Algebraic Data Types
-For this presentation, we will use Algebraic Data Types, which consist of Variballes, Constants and Function Symbols Additions and Multiplications. Defining a type in OCaml is done as follows:
+For this presentation, we will use Algebraic Data Types, which consist of Variballes, Constants and Function Symbols (Addition and Multiplication). Defining this type in OCaml is done as follows:
 ```ocaml
 type expression =
   | Var of string
@@ -38,11 +40,13 @@ type expression =
   | Add of expression * expression
   | Mul of expression * expression
 ```
+
 ## Parsing
 ### Lexing
 The first step of parsing is lexing. Lexing is the process of transforming a string into a list of tokens. For example, the string `x + y` would be transformed into the list `[alphanumeric "x"; space " "; symbolic "+"; space " "; alphanumeric "y"]`. 
 ### Parsing
-The second step of parsing is parsing. Parsing is the process of transforming a list of tokens into a tree. For example, the list `[alphanumeric "x"; space " "; symbolic "+"; space " "; alphanumeric "y"]` would be transformed into the tree `Add (Var "x", Var "y")`.
+After you have split your string into tokens, you can parse it. Parsing is the process of transforming a list of tokens into a tree. For example, the list `[alphanumeric "x"; space " "; symbolic "+"; space " "; alphanumeric "y"]` would be transformed into the tree `Add (Var "x", Var "y")`.
+
 ## Prettyprinting
 If you want to return readable output, you can use prettyprinting.
 Prettyprinting is the process of transforming a tree into a string. For example, the tree `Add (Var "x", Var "y")` would be transformed into the string `x + y`.
