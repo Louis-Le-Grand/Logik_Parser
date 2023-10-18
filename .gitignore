@@ -27,3 +27,10 @@ setup.log
 
 # Local OPAM switch
 _opam/
+
+# VS Code
+.vscode/
+.DS_Store
+
+# Vorerst
+slides_and_board/
