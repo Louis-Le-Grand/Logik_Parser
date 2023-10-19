@@ -7,7 +7,8 @@
 
 
 (*
-  Exercise 1: Complete the following function to parse simple arithmetic expressions 
+  Exercise 1: BINARY MINUS
+  Complete the following function to parse simple arithmetic expressions 
   with Subtraction. The parser and printer should be able to handle expressions like:
   (3 - 4) * 5 + 6 * 7
   (3 - 4 + 5) * 6 + 7
@@ -69,21 +70,3 @@ let e2 = default_parser "(3 - 4 + 5) * 6 + 7";;
 
 print_exp e1;;
 print_exp e2;;
-
-(*
-  Exercise 2: Extend the simplfy function to handle Subtraction in cases like:
-  x - x = 0
-  x - 0 = x
-  x -- y = x + y
-  x --- y = x - y 
-*)
-(*Tipp:   Therfor you need to edit the type expression and the function simplify*)
-
-
-
-
-(*
-   Extra Exercise: Modify the parser to handle unary minus. 
-   The parser and printer should be able to handle expressions like:
-    x --- x
-*)
