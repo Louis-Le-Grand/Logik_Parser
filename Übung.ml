@@ -11,6 +11,8 @@
   with Subtraction. The parser and printer should be able to handle expressions like:
   (3 - 4) * 5 + 6 * 7
   (3 - 4 + 5) * 6 + 7
+  Be careful to make subtraction associate to the left: 
+  x−y−z is understood as (x−y)−z not x−(y−z).
 *)
 
 type exp = 
