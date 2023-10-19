@@ -18,3 +18,4 @@ let rec lex inp =
 (*Bsp*)
 lex(explode_str "2*((var_1 + x) + 11)");;
 lex(explode_str "if (*p1-- == *p2++) then f() else g()");;
+lex(explode_str "Bonn hat die Postleitzahl 53115");;
