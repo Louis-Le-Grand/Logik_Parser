@@ -26,28 +26,26 @@ let explode_str str =
 let matches s = let chars = explode s in fun c -> List.mem c chars;;  
 
 
-(*TODO: Überartbeite handhabung '`' ISO-Latin1*)
 (*Checks if a 'char' is of type: space, punctuation, symbolic, numeric, alphanumeric
   Input: char
   Output: bool if char is type*)  
 let space = matches " \t\n\r"
   and punctuation = matches "()[]{},"
-  and symbolic = matches "~‘!@#$%^&*-+=|\\:;<>.?/"
+  and symbolic = matches "~!@#$%^&*-+=|\\:;<>.?/"
   and numeric = matches "0123456789"
   and alphanumeric = matches
-    "abcdefghijklmnopqrstuvwxyz_’ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";;
+    "abcdefghijklmnopqrstuvwxyz_ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";;
 
 
-(*TODO: Try to get rit of this mess*)
 (*Checks if the first symbol of a str is of type: space, punctuation, symbolic, numeric, alphanumeric
   Input: str
   Output: bool if char is type*)  
 let space_str inp = matches " \t\n\r" inp.[0]
   and punctuation_str inp = matches "()[]{},;" inp.[0]
-  and symbolic_str inp = matches "~‘!@#$%^&*-+=|\\:;<>.?/" inp.[0]
+  and symbolic_str inp = matches "~!@#$%^&*-+=|\\:;<>.?/" inp.[0]
   and numeric_str inp = matches "0123456789" inp.[0]
   and alphanumeric_str inp = matches
-    "abcdefghijklmnopqrstuvwxyz_’ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789" inp.[0];;
+    "abcdefghijklmnopqrstuvwxyz_ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789" inp.[0];;
 
 
 (*split a string in in too the beginnig and rest. Wher beging is the longest substig of type*)

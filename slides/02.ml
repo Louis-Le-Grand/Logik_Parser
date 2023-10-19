@@ -19,6 +19,6 @@ let rec simplify expr =
   | Mul(e1,e2) -> simplify1(Mul(simplify e1,simplify e2))
   | _ -> simplify1 expr;;
 
-(*Bsp*)
+(*Bsp (0 * x + 1) * 3 + 12 *)
 let e = Add(Mul(Add(Mul(Const(0),Var "x"),Const(1)),Const(3)),Const(12));;
 simplify e;;
